@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.formulario{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    background-color: rgb(238, 250, 250);
+    justify-content: center;
+}
+form{
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* padding: 20px; */
+    /* margin-top: 30px; */
+    width: 1000px;
+    /* background-color: rgb(3, 145, 145); */
+}
+input, select, button{
+    height: 30px;
+    margin: 0 20px 0 20px;
+}
+h1{
+    color: orange
+}
+body {
+    background-image: url("../images/PinturaDali.jpg");
+}
+#resultados{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding:10px;
+    margin: 50px 200px 0 200px;
+}
+.obra {
+    background: rgba(255, 255, 255, 0.342);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+.obra{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+    /* height: 460px; */
+    /* padding: 5px; */
+    /* filter: blur(4px); */
+}
+.imagen_container{
+
+    /* height: 230px; */
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
+}
+img {
+    height: 250px;
+}
+h3{
+    font-size: 2em;
+}
+span {
+    /* background-color: rgba(160, 250, 220, 0.534); */
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1.1em;
+}
+ul {
+    /* text-decoration: none; */
+    list-style: none;
+    /* background-color: aqua; */
+}
+li {
+    padding: 5px;
+}
+#paginacion {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+#paginacion button{
+    padding: 10px;
+    margin: 10px;
+}

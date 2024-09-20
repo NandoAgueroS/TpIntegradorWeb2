@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Api Museo</h1>
+    <div class="formulario">
+        <form action="" novalidate onsubmit="return false">
+            <label for="keyword">Palabra a buscar</label>
+            <input name="keyword" id="keyword" type="text">
+            <label for="location">País</label>
+            <select name="location" id="location">
+                <option value="">Todos</option>
+                <option value="France">Francia</option>
+                <option value="Iran">Iran</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Chile">Chile</option>
+                <option value="United States">United States</option>
+            </select>
+            <label for="department">Departamento</label>
+            <select name="department" id="department"></select>
+            <button id="enviar">Enviar</button>
+        </form>
+    </div>
+    <div id="paginacion">
+        <button id="retroceder">Atras</button>
+        <div id="numero-pagina"></div>
+        <button id="siguiente">Siguiente</button>
+    </div>
+    <div class="container">
+        <div id="resultados">
+            
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
