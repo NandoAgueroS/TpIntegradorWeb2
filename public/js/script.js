@@ -1,23 +1,26 @@
 const buscar = ()=>{
-    localStorage.removeItem('datosdeobras')
+    // localStorage.removeItem('datosdeobras')
     const keyword = document.getElementById('keyword').value
     const location = document.getElementById('location').value
     const department = document.getElementById('department').value
-    console.log(department)
+    // console.log(department)
     const resultados = document.getElementById('resultados');
     resultados.innerHTML = '<h2 style="font-size: 3em;">Cargando...</h2>';
     inicioPag=0;
-    let URL = "http://localhost:3000/obras?"
-    if(keyword) URL = URL + "keyword=" + keyword
-    if(department) URL = URL + "&department=" + department
-    if(location) URL = URL + "&location=" + location
-    console.log(URL)
+    let URL = "/obras?"
     console.log(keyword)
+    console.log(location)
+    console.log(department)
+    if(keyword) URL = URL.concat(`keyword=${keyword}`)
+    if(department) URL = URL.concat(`&department=${department}`)
+    if(location) URL = URL.concat(`&location=${location}`)
+    console.log(URL)
     fetch(URL)
     .then(response => response.json())
     .then(data => {
         localStorage.setItem('datosdeobras',JSON.stringify(data));
         mostrar();})
+    .catch((error)=>console.log(error))
 }    
 //       localStorage.setItem('datosdeobras',JSON.stringify(data));
 //       mostrar()
@@ -32,19 +35,26 @@ function mostrar(){
     const data = JSON.parse(localStorage.getItem('datosdeobras'))
     console.log(inicioPag)
     const resultados = document.getElementById('resultados');
-    document.getElementById('numero-pagina').innerHTML=`${(inicioPag/16)}`
+    document.getElementById('numero-pagina').innerHTML=`${(inicioPag/20)}`
     resultados.innerHTML = '';
   //   data.forEach(element => {
   //   }
   // )
-  for (let index = inicioPag; index < inicioPag + 16 && index<data.length; index++) {
+  console.log(data.length)
+  for (let index = inicioPag; index < inicioPag + 20 && index<data.length; index++) {
     const element = data[index];
-    let imagen = element['imagen-principal']
-    if(imagen == 'sin imagen') imagen = "js/libros.png"
+    let imagen = '';
+    if(element['imagen-principal']!='') 
+    imagen = element['imagen-principal']
+    else{
+    imagen = "../images/libros.png"
+    }
     const divObra = document.createElement('div')
     divObra.classList.add('obra')
     divObra.innerHTML = `
-    <div class = "imagen_container"><img src="${imagen}" alt="${element.fecha}"></div>
+    <div class = "imagen_container">
+    <span> ${element.fecha} </span>
+    <img src="${imagen}" alt=""></div>
     <span><ul>
     <li>Titulo: ${element.titulo}</li>
     <li>Cultura: ${element.cultura}</li>
@@ -64,12 +74,13 @@ function mostrar(){
     // `
   };
 const cargarDepartamentos = () => {
+    const URLDepartments = 'https://collectionapi.metmuseum.org/public/collection/v1/departments'
     const select = document.getElementById('department')
     const option = document.createElement('option')
     option.value='';
     option.text="Todos";
     select.appendChild(option)
-    fetch("http://localhost:3000/departamentos")
+    fetch(URLDepartments)
     .then(response => response.json())
     .then(data => {
         data.departments.forEach(element => {
@@ -78,7 +89,7 @@ const cargarDepartamentos = () => {
             option.text=element.displayName;
             select.appendChild(option)
         });
-    })
+    }).catch(error=>console.log(error))
 }
 cargarDepartamentos()
 let inicioPag = 0;
@@ -90,15 +101,15 @@ let inicioPag = 0;
 //   return inicioPag
 // }
 document.getElementById('siguiente').addEventListener('click',()=>{
-    if((inicioPag+16)<=JSON.parse(localStorage.getItem('datosdeobras')).length){
-        inicioPag +=16;
+    if((inicioPag+20)<JSON.parse(localStorage.getItem('datosdeobras')).length){
+        inicioPag +=20;
         mostrar()
     }
 })
 document.getElementById('retroceder').addEventListener('click',()=> {
-  if(inicioPag>=16)
-  inicioPag -=16;
-  mostrar()})
+  if(inicioPag>=20){
+  inicioPag -=20;
+  mostrar()}})
 
 
 

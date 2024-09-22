@@ -14,20 +14,14 @@ app.get("/obras", (req, res)=>{
     const keyword = req.query.keyword;
     const department = req.query.department;
     const location = req.query.location;
+    const withImages = req.query.withImages;
     console.log(department)
-    funciones.filtrar(keyword, department, location).then((a)=>{
+    funciones.filtrar(keyword, department, location, withImages).then((a)=>{
         res.status(200).json(a)
     })
     .catch(error=>console.log(error));
 })
-app.get("/departamentos",(req,res)=>{
-    funciones.cargarDepartments()
-    .then(departamentos => {
-        res.status(200).json(departamentos)
-    })
-    .catch(error => console.log(error))
-    
-})
+
 // app.get("/ubicaciones",(req,res)=>{
 //     funciones.cargarUbicaciones()
 //     .then(ubicaciones => {
@@ -37,7 +31,7 @@ app.get("/departamentos",(req,res)=>{
     
 // })
 app.get("/*", (req, res)=> {
-    res.status(404).sendFile(__dirname + "/html/not-found.html")
+    res.status(404).sendFile(__dirname + "/public/html/not-found.html")
 })
 app.listen(3000,()=>{
     console.log(`servidor iniciado en el puerto ${PORT}`)

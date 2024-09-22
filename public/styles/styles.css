@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+body {
+    background-image: url("../images/PinturaDali.jpg");
+}
 .formulario{
     width: 100%;
     display: flex;
@@ -27,9 +30,6 @@ input, select, button{
 }
 h1{
     color: orange
-}
-body {
-    background-image: url("../images/PinturaDali.jpg");
 }
 #resultados{
     display: grid;
@@ -63,8 +63,20 @@ body {
     margin: 10px;
     overflow: hidden;
 }
-img {
+.imagen_container img {
     height: 250px;
+}
+.imagen_container span{
+    display: none;
+    /* background-color: ; */
+}
+.imagen_container:hover span{
+    display: block;
+    position: fixed;
+    overflow: hidden;
+}
+.imagen_container img:hover{
+    filter: brightness(0.5);
 }
 h3{
     font-size: 2em;
