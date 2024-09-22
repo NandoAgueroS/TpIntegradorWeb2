@@ -3,7 +3,7 @@ const funciones = require("./funciones.js");
 const app = express()
 const PORT = 3000
 
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 // app.use(express.static(`${__dirname}/styles`))
 // app.use(express.static(`${__dirname}/js`))
 
