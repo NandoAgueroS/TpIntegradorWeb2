@@ -47,7 +47,7 @@ function mostrar(){
     if(element['imagen-principal']!='') 
     imagen = element['imagen-principal']
     else{
-    imagen = "../images/libros.png"
+    imagen = "../images/imagen-no-disponible.jpg"
     }
     const divObra = document.createElement('div')
     divObra.classList.add('obra')
