@@ -12,11 +12,11 @@ async function filtrar(keyword, department, location, withImages) {
   const URL1 = `${URLFiltro}hasImages=true&q=${keywordLista}${locationLista}${departmentLista}`;
   console.log(URL1);
   // try {
-    const response = await fetch(URL1);
-    const ids = await response.json();
-    const datos = await obtenerPorID(ids.objectIDs, withImages);
+  const response = await fetch(URL1);
+  const ids = await response.json();
+  const datos = await obtenerPorID(ids.objectIDs, withImages);
 
-    return datos;
+  return datos;
   // } catch (error) {
   //   return { error: "no se encontraron datos" };
   // }
@@ -24,11 +24,12 @@ async function filtrar(keyword, department, location, withImages) {
 async function obtenerPorID(id, withImages) {
   // console.log(id);
   //limitar a 100
-  console.log("length original: " + id.length);
-  id = id.length > 150 ? id.slice(0, 150) : id;
-  console.log("length limitado: " + id.length);
   let datos = [];
+  let sinFiltrarNulls = [];
   if (id) {
+    console.log("length original: " + id.length);
+    id = id.length > 150 ? id.slice(0, 150) : id;
+    console.log("length limitado: " + id.length);
     const variosFetch = id.map(async (element) => {
       try {
         const response = await fetch(
@@ -58,17 +59,18 @@ async function obtenerPorID(id, withImages) {
       } catch (error) {
         console.log(error);
         console.log(`no se pudo obtener el objeto con 
-                id:${element}`);
+          id:${element}`);
         return null;
       }
     });
-    console.log(variosFetch)
+    console.log(variosFetch);
     sinFiltrarNulls = await Promise.all(variosFetch);
   } else {
     console.log("no se encontraron resultados");
   }
   console.log(datos);
   datos = sinFiltrarNulls.filter((a) => a !== null);
+  console.log("datos " + datos);
   return datos;
 }
 
