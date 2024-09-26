@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 1.5em;
+    background-color: aquamarine;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imagen{
+width: 100px;
+/* border-radius: 20px; */
+overflow: hidden;
+}
+#obra-info{
+    margin-top: 50px;
+    font-size: 0.8em;
+    background-color: antiquewhite;
+    display: flex;
+    width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#imagen-principal{
+width: 100px;
+}
+#info{
+    padding: 0 50px;
+}
+#info ul{
+    list-style: none;
+}
+#objeto-fotos {
+    margin-top: 30px;
+    /* height: 200px; */
+}
+#imagen-adicional{
+    height: 700px;
+}

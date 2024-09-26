@@ -11,15 +11,15 @@ async function filtrar(keyword, department, location, withImages) {
 
   const URL1 = `${URLFiltro}hasImages=true&q=${keywordLista}${locationLista}${departmentLista}`;
   console.log(URL1);
-  try {
+  // try {
     const response = await fetch(URL1);
     const ids = await response.json();
     const datos = await obtenerPorID(ids.objectIDs, withImages);
 
     return datos;
-  } catch (error) {
-    return { error: "no se encontraron datos" };
-  }
+  // } catch (error) {
+  //   return { error: "no se encontraron datos" };
+  // }
 }
 async function obtenerPorID(id, withImages) {
   // console.log(id);
@@ -62,6 +62,7 @@ async function obtenerPorID(id, withImages) {
         return null;
       }
     });
+    console.log(variosFetch)
     sinFiltrarNulls = await Promise.all(variosFetch);
   } else {
     console.log("no se encontraron resultados");
@@ -70,6 +71,16 @@ async function obtenerPorID(id, withImages) {
   datos = sinFiltrarNulls.filter((a) => a !== null);
   return datos;
 }
+
+// async function cargarUbicaciones(){
+//   const response = await fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects");
+//   const ids = await response.json;
+//   const data = await ids.objectIDs.slice(0,100).map(async(element) => {
+//     const response1 = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${element}`)
+//     const data1 = await response1.json();
+//     return data;
+//   })
+// }
 // async function obtenerPorID(id, withImages){
 //     // console.log(id);
 //     //limitar a 100
@@ -112,7 +123,7 @@ async function obtenerPorID(id, withImages) {
 //     return datos;
 // }
 
-module.exports = { filtrar };
+module.exports = { filtrar, obtenerPorID };
 
 // const cargarUbicaciones = async () =>{
 //     try {

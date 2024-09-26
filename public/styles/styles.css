@@ -46,6 +46,7 @@ h1{
 .obra{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     border: 1px solid black;
     border-radius: 15px;
@@ -81,19 +82,24 @@ h1{
 h3{
     font-size: 2em;
 }
-span {
+.info {
     /* background-color: rgba(160, 250, 220, 0.534); */
     padding: 10px;
     border-radius: 20px;
     font-size: 1.1em;
 }
-ul {
+.obra ul {
     /* text-decoration: none; */
     list-style: none;
     /* background-color: aqua; */
 }
-li {
+.obra li {
     padding: 5px;
+}
+
+.obra button {
+    padding-bottom: 0;
+    margin-bottom: 10px;
 }
 #paginacion {
     background-color: aqua;
