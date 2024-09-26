@@ -28,7 +28,7 @@ async function obtenerPorID(id, withImages) {
   let sinFiltrarNulls = [];
   if (id) {
     console.log("length original: " + id.length);
-    id = id.length > 150 ? id.slice(0, 150) : id;
+    id = id.length > 100 ? id.slice(0, 100) : id;
     console.log("length limitado: " + id.length);
     const variosFetch = id.map(async (element) => {
       try {
