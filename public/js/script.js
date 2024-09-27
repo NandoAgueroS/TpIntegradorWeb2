@@ -1,4 +1,5 @@
 const resultados = document.getElementById("resultados");
+const informacionDatos = document.getElementById("informacion-datos");
 let dataResponse = [];
 let obrasSinImagen = 0;
 const buscar = () => {
@@ -17,7 +18,7 @@ const buscar = () => {
   if (location) URL = URL.concat(`&location=${location}`);
   console.log(URL);
   fetch(URL)
-    .then((response) => {
+  .then((response) => {
       console.log(response);
       if (response.status === 504) {
         throw new Error(
@@ -36,12 +37,14 @@ const buscar = () => {
     })
     .catch((error) => {
       console.log(error);
-      resultados.innerHTML = `Ocurrió un error: ${error}`;
+      informacionDatos.innerHTML = `Ocurrió un error: ${error}`;
+      resultados.innerHTML = '';
+      // document.getElementById("paginacion").innerHTML = ''
     });
-  // try {
-
-  //   const response = await fetch(URL)
-  //   // console.log(response.status)
+    // try {
+      
+    //   const response = await fetch(URL)
+    //   // console.log(response.status)
   //   console.log('Objeto respuesta: ' + response + '.')
   //   if (response.status == 504) {
   //     console.log('Error: El servidor demoró demasiado, intente una busqueda más específica')
@@ -55,12 +58,12 @@ const buscar = () => {
   //         mostrar();
   //       }
   // } catch (error) {
-  //   console.log(error);
-  //   resultados.innerHTML = `Ocurrió un error: ${error}`;
-
-  // }
-};
-
+    //   console.log(error);
+    //   resultados.innerHTML = `Ocurrió un error: ${error}`;
+    
+    // }
+  };
+  
 document.getElementById("enviar").addEventListener("click", buscar);
 function mostrar() {
   // const data = moverSinImagenAlFinal(JSON.parse(localStorage.getItem('datosdeobras')))
@@ -74,9 +77,8 @@ function mostrar() {
       dataResponse.length
     } Obras encontradas`;
     resultados.innerHTML = "";
-    const informacionDatos = document.getElementById("informacion-datos");
     informacionDatos.innerHTML = `Se movieron al final ${obrasSinImagen} obras sin imagen`;
-
+    
     console.log(data.length);
     for (
       let index = inicioPag;
@@ -93,17 +95,17 @@ function mostrar() {
       const divObra = document.createElement("div");
       divObra.classList.add("obra");
       divObra.innerHTML = `
-    <div class="imagen_info">
-    <div class = "imagen_container">
-    <span> ${element.fecha} </span>
-    <img src="${imagen}" alt=""></div>
-    <div class="info"><ul>
-    <li><h4>${element.titulo}</h4></li>
-    <li>Cultura: ${element.cultura}</li>
-    <li>Dinastia: ${element.dinastia}</li>
-    </ul>
-    </div>
-    </div>`;
+      <div class="imagen_info">
+      <div class = "imagen_container">
+      <span> ${element.fecha} </span>
+      <img src="${imagen}" alt=""></div>
+      <div class="info"><ul>
+      <li><h4>${element.titulo}</h4></li>
+      <li>Cultura: ${element.cultura}</li>
+      <li>Dinastia: ${element.dinastia}</li>
+      </ul>
+      </div>
+      </div>`;
       if (element.imagenesAdicionales.length > 0) {
         const button = document.createElement("button");
         button.innerHTML = "ver más imágenes";
@@ -119,7 +121,9 @@ function mostrar() {
       resultados.appendChild(divObra);
     }
   } else {
-    resultados.innerHTML = "No se encontraron resultados para la búsqueda";
+    informacionDatos.innerHTML = "No se encontraron resultados para la búsqueda";
+    resultados.innerHTML = '';
+    // document.getElementById("paginacion").innerHTML = ''
   }
 }
 
