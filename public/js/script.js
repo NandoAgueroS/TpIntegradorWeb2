@@ -6,7 +6,7 @@ const buscar = () => {
   const keyword = document.getElementById("keyword").value;
   const location = document.getElementById("location").value;
   const department = document.getElementById("department").value;
-  // resultados.innerHTML = '<h2 style="font-size: 3em;">Cargando...</h2>';
+  resultados.innerHTML = '<h2 style="font-size: 3em;">Cargando...</h2>';
   inicioPag = 0;
   let URL = "/obras?";
   console.log(keyword);
@@ -17,7 +17,13 @@ const buscar = () => {
   if (location) URL = URL.concat(`&location=${location}`);
   console.log(URL);
   fetch(URL)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status ==504) {
+        throw 'Error: El servidor demoró demasiado, intente una busqueda más específica'
+      } else {
+        response.json()
+      }
+    })
     .then((data) => {
       // localStorage.setItem('datosdeobras',JSON.stringify(data));
       const reoganizado = moverSinImagenAlFinal(data);

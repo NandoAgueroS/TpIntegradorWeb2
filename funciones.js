@@ -22,25 +22,24 @@ async function filtrar(keyword, department, location, withImages) {
   // }
 }
 async function obtenerPorID(id, withImages) {
-  // console.log(id);
-  //limitar a 100
   let datos = [];
-  let sinFiltrarNulls = [];
+  // let sinFiltrarNulls = [];
+  let tramos = [];
   if (id) {
     console.log("length original: " + id.length);
-    id = id.length > 100 ? id.slice(0, 100) : id;
+    id = id.length > 200 ? id.slice(0, 200) : id;
+    for (let i = 0; i< id.length; i += 100){
+      tramos.push(id.slice(i, i + 100));
+    }
+    for (const tramo of tramos) {
+      
     console.log("length limitado: " + id.length);
-    const variosFetch = id.map(async (element) => {
+    const variosFetch = tramo.map(async (element) => {
       try {
         const response = await fetch(
           `https://collectionapi.metmuseum.org/public/collection/v1/objects/${element}`
         );
         const data = await response.json();
-        // const promesaTraduccion = await Promise.all([
-        //   traduccion.traducir(data.culture),
-        //   traduccion.traducir(data.title),
-        //   traduccion.traducir(data.dynasty),
-        // ]);
         const promesaTraduccion = await traduccion.traducirJSON({
           0: data.title,
           1: data.culture,
@@ -64,13 +63,13 @@ async function obtenerPorID(id, withImages) {
       }
     });
     console.log(variosFetch);
-    sinFiltrarNulls = await Promise.all(variosFetch);
+    const sinFiltrarNulls = await Promise.all(variosFetch);
+    // console.log(datos);
+    datos.push(...sinFiltrarNulls.filter((a) => a !== null));
+    console.log("datos " + datos);}
   } else {
     console.log("no se encontraron resultados");
   }
-  console.log(datos);
-  datos = sinFiltrarNulls.filter((a) => a !== null);
-  console.log("datos " + datos);
   return datos;
 }
 
