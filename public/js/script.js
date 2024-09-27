@@ -24,7 +24,7 @@ const buscar = () => {
           "Error: El servidor demoró demasiado, intente una busqueda más específica"
         );
       } else if (response.status >= 200 && response.status < 300) {
-        response.json();
+        return response.json();
       }
     })
     .then((data) => {
