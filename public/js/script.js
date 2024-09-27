@@ -18,7 +18,7 @@ const buscar = () => {
   console.log(URL);
   fetch(URL)
     .then((response) => {
-      if (response.status == 504) {
+      if (response.status === 504) {
         throw new Error('Error: El servidor demoró demasiado, intente una busqueda más específica');
       } else {
         response.json();
