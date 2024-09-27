@@ -1,3 +1,19 @@
+function validarForm(){
+  const keyword = document.getElementById("keyword").value;
+  const location = document.getElementById("location").value;
+  const department = document.getElementById("department").value;
+  // const errores = [];
+  // if(keyword.trim().length < 3 && keyword.trim()>0){
+  //    informacionDatos.innerHTML = `<p class="error">La palabra clave debe tener al menos 3 caracteres</p>`;
+  // }
+  // else 
+  if(!keyword && !location && !department){
+    informacionDatos.innerHTML = '<p class="error">Debe establecer al menos un filtro para la búsqueda'
+  }
+  else {
+    buscar(keyword,location, department)
+  }
+}
 const resultados = document.getElementById("resultados");
 const informacionDatos = document.getElementById("informacion-datos");
 const siguientePaginacion = document.getElementById('siguiente')
@@ -5,6 +21,7 @@ const retrocederPaginacion = document.getElementById('retroceder')
 let dataResponse = [];
 let obrasSinImagen = 0;
 let inicioPag = 0;
+
 function buscar(keyword, location, department) {
   informacionDatos.innerHTML = '<h3 style="font-size: 2em;">Cargando...</h3>';
   inicioPag = 0;
@@ -49,7 +66,9 @@ function mostrar() {
     
     if (dataResponse.length > 0) {
       // const resultados = document.getElementById("resultados");
-      informacionDatos.innerHTML = `Se movieron al final ${obrasSinImagen} obras sin imagen`;
+      if (obrasSinImagen>0) { 
+        informacionDatos.innerHTML = `${obrasSinImagen} obras sin imagen se movieron al final`;
+      }
       console.log(data.length);
       for (
        let index = inicioPag;
@@ -164,20 +183,4 @@ function limpiarContenido(){
   else siguientePaginacion.style.visibility = 'hidden'
   if (inicioPag - 20 >= 0) retrocederPaginacion.style.visibility = 'visible'
   else retrocederPaginacion.style.visibility = 'hidden'
-}
-
-function validarForm(){
-  const keyword = document.getElementById("keyword").value;
-  const location = document.getElementById("location").value;
-  const department = document.getElementById("department").value;
-  // const errores = [];
-  if(keyword.trim().length < 3 && keyword.trim()>0){
-     informacionDatos.innerHTML = `<p class="error">La palabra clave debe tener al menos 3 caracteres</p>`;
-  }
-  else if(!keyword && !location && !department){
-    informacionDatos.innerHTML = '<p class="error">Debe establecer al menos un filtro para la búsqueda'
-  }
-  else {
-    buscar(keyword,location, department)
-  }
 }

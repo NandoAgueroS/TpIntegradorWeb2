@@ -5,7 +5,7 @@ let actualModal = document.getElementById("actual-modal");
 const imagenAdicional = document.getElementById("imagen-adicional");
 function mostrarModal(element) {
   indexActual = 0;
-  imagenes = element.imagenesAdicionales;
+  imagenes = actualizarUrls(element.imagenesAdicionales);
   const tituloObra = document.getElementById("modal-title");
   const cantidadAdicionales = document.getElementById("cantidad-modal");
   tituloObra.innerHTML = element.titulo;
@@ -30,5 +30,9 @@ function anteriorImagen() {
     console.log(indexActual);
     actualModal.innerHTML = indexActual + 1;
   }
+}
+function actualizarUrls(arreglo){
+  const imagenesLivianas = arreglo.map(a=> a.replace('original', 'web-large'));
+  return imagenesLivianas;
 }
 
