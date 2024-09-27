@@ -22,10 +22,7 @@ form{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* padding: 20px; */
-    /* margin-top: 30px; */
     width: 1300px;
-    /* background-color: rgb(3, 145, 145); */
 }
 .formulario label {
     font-size: 1.3em;
@@ -41,11 +38,9 @@ h1{
     color: orange
 }
 #informacion-datos{
-    /* background-color: rgba(137, 189, 171, 0.849); */
     font-size: 1.5em;
     width: 700px;
     min-height: 100px;
-    /* border: 1px solid orange; */
     text-align: center;
     font-weight: 700;
 }
@@ -54,11 +49,8 @@ h1{
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding:10px;
-    /* width: 70%; */
-    /* margin: 50px 200px 0 200px; */
 }
 .contenido{
-    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,12 +68,8 @@ h1{
     border: 1px solid black;
     border-radius: 15px;
     width: 330px;
-    /* padding: 5px; */
-    /* filter: blur(4px); */
 }
 .imagen_container{
-
-    /* height: 230px; */
     display: flex;
     justify-content: center;
     width: 300px;
@@ -97,16 +85,12 @@ h1{
     align-items: center;
 }
 .imagen_container img {
-    /* height: 250px; */
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    /* max-width: fit-content; */
-    /* max-height: -content; */
 }
 .imagen_container span{
     display: none;
-    /* background-color: ; */
 }
 .imagen_container:hover span{
     display: block;
@@ -115,48 +99,49 @@ h1{
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.788);
 }
-/* .imagen_container img:hover{
-    filter: brightness(0.5);
-} */
-h3{
+
+/* h3{
     font-size: 2em;
-}
+} */
 .btn-primary{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 .info {
-    /* background-color: rgba(160, 250, 220, 0.534); */
     padding: 10px;
     border-radius: 20px;
     font-size: 1.1em;
     font-weight: 500;
-    /* backdrop-filter: blur(5px); */
 }
 .obra ul {
-    /* text-decoration: none; */
     list-style: none;
-    /* background-color: aqua; */
 }
 .obra li {
     padding: 5px;
 }
 
-/* .obra button {
-    padding-bottom: 0;
-    margin-bottom: 10px;
-} */
 #paginacion {
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.226);
+    color: white;
+    font-weight: 400;
+    font-size: 1.2em;
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    visibility: hidden;
 }
 #paginacion button{
     padding: 10px;
     margin: 10px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-/*imagenes adicionales, cambiar a otro css después*/
-
+.error{
+    color : rgb(83, 0, 0);
+}

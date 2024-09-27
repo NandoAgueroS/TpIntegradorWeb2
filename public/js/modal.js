@@ -6,7 +6,6 @@ const imagenAdicional = document.getElementById("imagen-adicional");
 function mostrarModal(element) {
   indexActual = 0;
   imagenes = element.imagenesAdicionales;
-  // const modal = document.getElementById('exampleModalCenter');
   const tituloObra = document.getElementById("modal-title");
   const cantidadAdicionales = document.getElementById("cantidad-modal");
   tituloObra.innerHTML = element.titulo;
@@ -23,7 +22,6 @@ function siguienteImagen() {
     imagenAdicional.src = imagenes[indexActual];
     actualModal.innerHTML = indexActual + 1;
   }
-  // console.log(indexActual)
 }
 function anteriorImagen() {
   if (indexActual > 0) {
@@ -33,28 +31,4 @@ function anteriorImagen() {
     actualModal.innerHTML = indexActual + 1;
   }
 }
-const objetoEjemplo = {
-  id: 2019,
-  titulo: "Cómoda con cajones",
-  cultura: "Americano",
-  dinastia: "no especifica dinastia",
-  "imagen-principal":
-    "https://images.metmuseum.org/CRDImages/ad/web-large/85I_ACF3093R6.jpg",
-  pais: "United States",
-  imagenesAdicionales: [
-    "https://images.metmuseum.org/CRDImages/ad/original/ADA4663.jpg",
-    "https://images.metmuseum.org/CRDImages/ad/original/ADA3854.jpg",
-    "https://images.metmuseum.org/CRDImages/ad/original/ADA66.jpg",
-  ],
-  fecha: "1675–1700",
-};
-// cargar();
-// const fetchAllImages = async(a)=>{
-//   console.log(a)
-//   const imagenesFetch = a.map(async(element)=>{
-//     const response = await fetch(element);
-//     return response
-//   })
-//   const imagenesListas = await Promise.all(imagenesFetch)
-//   return imagenesListas
-// }
+
