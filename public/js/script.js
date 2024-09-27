@@ -1,7 +1,7 @@
 const resultados = document.getElementById("resultados");
 let dataResponse = [];
 let obrasSinImagen = 0;
-const buscar = async () => {
+const buscar = () => {
   // localStorage.removeItem('datosdeobras')
   const keyword = document.getElementById("keyword").value;
   const location = document.getElementById("location").value;
