@@ -1,7 +1,7 @@
 const resultados = document.getElementById("resultados");
 let dataResponse = [];
 let obrasSinImagen = 0;
-const buscar = () => {
+const buscar = async() => {
   // localStorage.removeItem('datosdeobras')
   const keyword = document.getElementById("keyword").value;
   const location = document.getElementById("location").value;
@@ -16,28 +16,45 @@ const buscar = () => {
   if (department) URL = URL.concat(`&department=${department}`);
   if (location) URL = URL.concat(`&location=${location}`);
   console.log(URL);
-  fetch(URL)
-    .then((response) => {
-      console.log(response)
-      if (response.status === 504) {
-        console.log('Error: El servidor demoró demasiado, intente una busqueda más específica')
-        // throw new Error('Error: El servidor demoró demasiado, intente una busqueda más específica');
-      } else {
-        response.json();
-      }
-    })
-    .then((data) => {
-      // localStorage.setItem('datosdeobras',JSON.stringify(data));
-      const reoganizado = moverSinImagenAlFinal(data);
-      dataResponse = reoganizado.obras;
-      obrasSinImagen = reoganizado.sinImagenLength;
-      mostrar();
-    })
-    .catch((error) => {
-      console.log(error);
-      resultados.innerHTML = `Ocurrió un error: ${error}`;
-    });
-  // mostrar()
+  // fetch(URL)
+  //   .then((response) => {
+  //     console.log(response)
+  //     if (response.status === 504) {
+    //     } else {
+      //       response.json();
+      //     }
+      //   })
+  //   .then((data) => {
+  //     // localStorage.setItem('datosdeobras',JSON.stringify(data));
+  //     const reoganizado = moverSinImagenAlFinal(data);
+  //     dataResponse = reoganizado.obras;
+  //     obrasSinImagen = reoganizado.sinImagenLength;
+  //     mostrar();
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     resultados.innerHTML = `Ocurrió un error: ${error}`;
+  //   });
+  try {
+    
+    const response = await fetch(URL)
+    console.log(response)
+    if (response.status == 504) {
+      console.log('Error: El servidor demoró demasiado, intente una busqueda más específica')
+      throw new Error('Error: El servidor demoró demasiado, intente una busqueda más específica');
+    } else if(response.status>=200 && response.status < 300) {
+      console.log(response.status)
+          const data = await response.json()
+          const reoganizado = moverSinImagenAlFinal(data);
+          dataResponse = reoganizado.obras;
+          obrasSinImagen = reoganizado.sinImagenLength;
+          mostrar();
+        }
+  } catch (error) {
+    console.log(error);
+    resultados.innerHTML = `Ocurrió un error: ${error}`;
+    
+  }
 };
 
 document.getElementById("enviar").addEventListener("click", buscar);
