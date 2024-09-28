@@ -27,11 +27,10 @@ function buscar(keyword, location, department) {
   if (keyword) URL = URL.concat(`keyword=${keyword}`);
   if (department) URL = URL.concat(`&department=${department}`);
   if (location) URL = URL.concat(`&location=${location}`);
-  console.log(URL);
+  // console.log(URL);
 
   fetch(URL)
   .then((response) => {
-      console.log(response);
       if (response.status === 504) {
         throw new Error("El servidor demoró demasiado, intente una búsqueda más específica");
       } else if (response.status >= 200 && response.status < 300) {
@@ -63,7 +62,6 @@ function mostrar() {
       if (obrasSinImagen>0) { 
         informacionDatos.innerHTML = `${obrasSinImagen} obras sin imagen se muestran al final`;
       }
-      console.log(data.length);
       for (
        let index = inicioPag;
        index < inicioPag + 20 && index < dataResponse.length;
@@ -159,17 +157,16 @@ function moverSinImagenAlFinal(array) {
     sinImagenLength: sinImagen.length,
     conImagenLength: conImagen.length,
   };
-  console.log(sinImagen);
-  console.log(conImagen);
-  console.log(reorganización);
+  // console.log(sinImagen);
+  // console.log(conImagen);
+  // console.log(reorganización);
   return reorganización;
 }
 
 function limpiarContenido(){
-  console.log('error, json:'+dataResponse)
   resultados.innerHTML='';
   document.getElementById("numero-pagina").innerHTML = `Página ${inicioPag / 20 + 1} de ${Math.ceil(dataResponse.length / 20)} <br> 
-   Mostrando ${dataResponse.length} obras`;
+   Total: ${dataResponse.length} obras`;
    const paginacionHtml = document.getElementById('paginacion');
   if (dataResponse.length>0) paginacionHtml.style.visibility = 'visible';
   else paginacionHtml.style.visibility = 'hidden';

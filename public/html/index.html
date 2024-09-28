@@ -15,20 +15,36 @@
     <h1>Api Museo</h1>
     <div class="formulario">
         <form action="" novalidate onsubmit="return false">
-            <label for="keyword">Palabra a buscar</label>
-            <input name="keyword" id="keyword" type="text">
-            <label for="location">País</label>
-            <select name="location" id="location">
-                <option value="">Todos</option>
-                <option value="France">Francia</option>
-                <option value="Iran">Iran</option>
-                <option value="New Zealand">New Zealand</option>
-                <option value="Mexico">Mexico</option>
-                <option value="Chile">Chile</option>
-                <option value="United States">United States</option>
-            </select>
-            <label for="department">Departamento</label>
-            <select name="department" id="department"></select>
+            <div class="contenedor-input">
+                <label for="keyword">Palabra a buscar</label>
+                <input name="keyword" id="keyword" type="text">
+            </div>
+            <div class="contenedor-input">
+                <label for="location">Ubicación</label>
+                <select name="location" id="location">
+                    <option value="">Todos</option>
+                    <option value="France">Francia</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="New York">Nueva York</option>
+                    <option value="United States">Estados Unidos</option>
+                    <option value="Europe">Europa</option>
+                    <option value="Oceania">Oceanía</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Germany">Alemania</option>
+                    <option value="Spain">España</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Italy">Italia</option>
+                    <option value="Colombia">Colombia</option>
+                </select>
+            </div>
+            <div class="contenedor-input">
+                <label for="department">Departamento</label>
+                <select name="department" id="department"></select>
+            </div>
             <button id="enviar">Enviar</button>
         </form>
     </div>

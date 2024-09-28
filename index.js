@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/html/index.html");
 });
+
 app.get("/obras", (req, res) => {
   const keyword = req.query.keyword;
   const department = req.query.department;
