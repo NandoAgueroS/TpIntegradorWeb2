@@ -18,6 +18,7 @@ let obrasSinImagen = 0;
 let inicioPag = 0;
 
 function buscar(keyword, location, department) {
+  limpiarContenido()
   informacionDatos.innerHTML = '<h3 style="font-size: 2em;">Cargando...</h3>';
   inicioPag = 0;
   let URL = "/obras?";
