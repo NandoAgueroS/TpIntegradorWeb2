@@ -73,12 +73,12 @@ h1{
     justify-content: space-between;
     border: 1px solid black;
     border-radius: 15px;
-    width: 250px;
+    width: 270px;
 }
 .imagen_container{
     display: flex;
     justify-content: center;
-    width: 230px;
+    width: 240px;
     height: 250px;
     padding: 10px;
     margin: 10px;
