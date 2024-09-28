@@ -2,11 +2,6 @@ function validarForm(){
   const keyword = document.getElementById("keyword").value;
   const location = document.getElementById("location").value;
   const department = document.getElementById("department").value;
-  // const errores = [];
-  // if(keyword.trim().length < 3 && keyword.trim()>0){
-  //    informacionDatos.innerHTML = `<p class="error">La palabra clave debe tener al menos 3 caracteres</p>`;
-  // }
-  // else 
   if(!keyword && !location && !department){
     informacionDatos.innerHTML = '<p class="error">Debe establecer al menos un filtro para la búsqueda'
   }
@@ -52,8 +47,7 @@ function buscar(keyword, location, department) {
     .catch((error) => {
       console.log(error);
       informacionDatos.innerHTML = `Ocurrió un error: ${error}`;
-      resultados.innerHTML = '';
-      // document.getElementById("paginacion").innerHTML = ''
+      limpiarContenido();
     });
   };
   
@@ -65,9 +59,8 @@ function mostrar() {
   try {
     
     if (dataResponse.length > 0) {
-      // const resultados = document.getElementById("resultados");
       if (obrasSinImagen>0) { 
-        informacionDatos.innerHTML = `${obrasSinImagen} obras sin imagen se movieron al final`;
+        informacionDatos.innerHTML = `${obrasSinImagen} obras sin imagen se muestran al final`;
       }
       console.log(data.length);
       for (
@@ -116,7 +109,6 @@ function mostrar() {
   } else {
     informacionDatos.innerHTML = "No se encontraron resultados para la búsqueda";
     resultados.innerHTML = '';
-    // document.getElementById("paginacion").innerHTML = ''
   }
 } catch (error) {
   console.log(error)  
