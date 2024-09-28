@@ -18,6 +18,7 @@ let obrasSinImagen = 0;
 let inicioPag = 0;
 
 function buscar(keyword, location, department) {
+  dataResponse = [];
   limpiarContenido()
   informacionDatos.innerHTML = '<h3 style="font-size: 2em;">Cargando...</h3>';
   inicioPag = 0;
@@ -47,7 +48,6 @@ function buscar(keyword, location, department) {
     .catch((error) => {
       console.log(error);
       informacionDatos.innerHTML = `Hubo un problema: ${error}`;
-      dataResponse = [];
       limpiarContenido();
     });
   };
