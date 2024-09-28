@@ -33,7 +33,7 @@ function buscar(keyword, location, department) {
   .then((response) => {
       console.log(response);
       if (response.status === 504) {
-        throw new Error("El servidor demoró demasiado, intente una busqueda más específica");
+        throw new Error("El servidor demoró demasiado, intente una búsqueda más específica");
       } else if (response.status >= 200 && response.status < 300) {
         return response.json();
       }
@@ -165,6 +165,7 @@ function moverSinImagenAlFinal(array) {
 }
 
 function limpiarContenido(){
+  console.log('error, json:'+dataResponse)
   resultados.innerHTML='';
   document.getElementById("numero-pagina").innerHTML = `Página ${inicioPag / 20 + 1} de ${Math.ceil(dataResponse.length / 20)} <br> 
    Mostrando ${dataResponse.length} obras`;
