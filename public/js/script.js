@@ -62,6 +62,8 @@ function mostrar() {
     if (dataResponse.length > 0) {
       if (obrasSinImagen>0) { 
         informacionDatos.innerHTML = `${obrasSinImagen} obras sin imagen se muestran al final`;
+      }else{
+        informacionDatos.innerHTML = '';
       }
       for (
        let index = inicioPag;
