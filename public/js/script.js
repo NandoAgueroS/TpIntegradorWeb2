@@ -47,6 +47,7 @@ function buscar(keyword, location, department) {
     .catch((error) => {
       console.log(error);
       informacionDatos.innerHTML = `Ocurrió un error: ${error}`;
+      dataResponse = [];
       limpiarContenido();
     });
   };
