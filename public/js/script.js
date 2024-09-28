@@ -46,7 +46,7 @@ function buscar(keyword, location, department) {
     })
     .catch((error) => {
       console.log(error);
-      informacionDatos.innerHTML = `Ocurrió un error: ${error}`;
+      informacionDatos.innerHTML = `Hubo un problema: ${error}`;
       dataResponse = [];
       limpiarContenido();
     });
